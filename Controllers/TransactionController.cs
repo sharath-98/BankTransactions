@@ -61,24 +61,6 @@ namespace BankTransactions.Controllers
             return View(transaction);
         }
 
-        // GET: Transaction/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Transactions == null)
-            {
-                return NotFound();
-            }
-
-            var transaction = await _context.Transactions
-                .FirstOrDefaultAsync(m => m.TransactionId == id);
-            if (transaction == null)
-            {
-                return NotFound();
-            }
-
-            return View(transaction);
-        }
-
         // POST: Transaction/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -96,11 +78,6 @@ namespace BankTransactions.Controllers
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool TransactionExists(int id)
-        {
-          return (_context.Transactions?.Any(e => e.TransactionId == id)).GetValueOrDefault();
         }
     }
 }
