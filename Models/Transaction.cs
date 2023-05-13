@@ -34,6 +34,7 @@ namespace BankTransactions.Models
         public int Amount { get; set; }
 
         [Required(ErrorMessage = "This field is required.")]
+        [DisplayFormat(DataFormatString = "{0:MMM-dd-yy}")]
         public DateTime Date { get; set; }
     }
 }
